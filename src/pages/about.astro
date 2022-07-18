@@ -1,0 +1,12 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+import Footer from '../components/Footer.astro';
+import HelloWorld from '../components/HelloWorld.jsx'
+---
+
+<MainLayout>
+  <h1>About</h1>
+  <HelloWorld client:load />
+  <Footer title="Footer en About" />
+</MainLayout>

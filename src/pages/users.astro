@@ -1,0 +1,44 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Footer from '../components/Footer.astro';
+
+const res = await fetch("https://rickandmortyapi.com/api/character");
+const data = await res.json();
+console.log(data);
+const characters = data.results
+---
+
+<MainLayout>
+  <header>
+    <h1>Users</h1>
+  </header>
+
+  <ul>
+    {
+      characters.map(character => (
+        <li>
+          <h1>{character.name}</h1>
+          <img src={character.image} alt={character.name} class="image-profile">
+        </li>
+      ))
+    }
+  </ul>
+
+  <Footer title="Footer en Users" />
+</MainLayout>
+
+<style lang="scss">
+
+  header {
+    h1 {
+      background: #333;
+      color: white;
+      padding: 10px;
+    }
+  }
+  
+  .image-profile {
+    border-radius: 50%;
+    width: 100px;
+  }
+  </style>
